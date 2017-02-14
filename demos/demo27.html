@@ -27,14 +27,14 @@ var layer=new Konva.Layer();
 stage.add(layer);
 
 // 中心点坐标
-var cenX=stage.width()/2;
+var cenX=stage.width()/2;//注意：使用Konva获取数据都是使用方法获取
 var cenY=stage.height()/2;
 
 var x=1/8*stage.width();
 var y=cenY;
 var height=1/12 *stage.height();
 var maxWidth=3/4 *stage.width();
-//绘制一个进度条
+//4 绘制一个进度条
 var innerRect=new Konva.Rect({
     x:x,
     y:y,
@@ -45,10 +45,10 @@ var innerRect=new Konva.Rect({
     cornerRadius:height/2, //角落
 });
 
-//把内部的矩形放到层里面去
+//5 把内部的矩形放到层里面去
 layer.add(innerRect);
 
-//绘制外圈矩形
+//6 绘制外圈矩形
 var outRect=new Konva.Rect({
     x:x,
     y:y,
@@ -63,12 +63,32 @@ layer.add(outRect);
 
 layer.draw();
 
-// Konva 的动画系统
+
+//8 实际情况
+// var imgIndex=0;
+// var imgSrcArr=['01.png','02.png'];
+// for(var i=0;i<imgSrcArr.length;i++){
+//     var img=new Image();
+//     img.src=imgSrcArr[i];
+//     img.onload=function(){
+//         imgIndex+=1;
+//         innerRect.to({
+//             width:maxWidth*(imgIndex/imgSrcArr.length),
+//             duration:1.5,//动画执行1.5秒
+//             opacity:.6,
+//             easing:Konva.Easings.EaseInOut
+//         });
+//     }
+// }
+
+
+
+//7  Konva 的动画系统
 innerRect.to({
     width:maxWidth,
     duration:1.5,//动画执行1.5秒
     opacity:.6,
-    easing:Konva.Easings.BackEaseIn
+    easing:Konva.Easings.EaseInOut
 });
 </script>
 </body>
